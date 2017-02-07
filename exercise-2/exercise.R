@@ -112,7 +112,9 @@ bar + coord_polar()
 # Take the scatter plot of price by carat data (colored by clarity) and add _facets_ based on
 # the diamond's `color`
 ggplot(data = diamonds) +
-  geom_point(mapping = aes())
+  geom_point(mapping = aes(x = carat, y = price, color = clarity)) +
+  scale_color_brewer(palette = "Spectral") +
+  facet_wrap(~color)
 
 
 ## Saving Plots
@@ -120,3 +122,4 @@ ggplot(data = diamonds) +
 # Use the `ggsave()` function to save one of your plots (the most recent one generated) to disk.
 # Name the output file "my-plot.png".
 # Make sure you've set the working directory!!
+ggsave("my-plot.png")
